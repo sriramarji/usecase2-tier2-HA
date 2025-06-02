@@ -25,6 +25,6 @@ variable "db_password" {
 }
 
 variable "web_sg_id" {
-  type = string
+  type = list(string)
   description = "ID of the web server security group"
 }
