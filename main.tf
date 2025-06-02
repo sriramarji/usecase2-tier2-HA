@@ -30,7 +30,7 @@ module "rds" {
   web_sg_id          = module.ec2.web_sg_id
 }
 
-module "alb" {
+/*module "alb" {
   source                = "./modules/alb"
   name                  = "web-lb"
   #security_group_id     = module.security_groups.web_sg_id
@@ -49,4 +49,4 @@ module "alb" {
   listener_protocol     = "HTTP"
   target_ids            = module.ec2.instance_id
   tags                  = var.tags
-}
+}*/
