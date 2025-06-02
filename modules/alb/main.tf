@@ -1,4 +1,4 @@
-resource "aws_lb" "web_lb" {
+/*resource "aws_lb" "web_lb" {
   name                       = var.name
   internal                   = false
   load_balancer_type         = "application"
@@ -43,4 +43,4 @@ resource "aws_lb_target_group_attachment" "web_tg_attachment" {
   target_group_arn = aws_lb_target_group.web_tg.arn
   target_id        = var.target_ids[count.index]
   port             = var.target_group_port
-}
+}*/
