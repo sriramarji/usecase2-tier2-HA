@@ -3,7 +3,7 @@ output "webserver_public_ips" {
     description = "public IP's of web servers"
 }
 
-output "websg_id" {
+output "web_sg_id" {
     value = "aws_security_group.web_sg.id"
     description = "ID of web server security group"
 }
