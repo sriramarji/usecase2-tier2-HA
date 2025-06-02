@@ -29,3 +29,24 @@ module "rds" {
   db_password        = var.db_password
   web_sg_id          = module.ec2.web_sg_id
 }
+
+module "alb" {
+  source                = "./modules/alb"
+  name                  = "web-lb"
+  #security_group_id     = module.security_groups.web_sg_id
+  #subnet_ids            = module.network.public_subnets_id
+  target_group_name     = "web-target-group"
+  target_group_port     = 80
+  target_group_protocol = "HTTP"
+  vpc_id                = module.vpc.vpc_id
+  health_check_path     = "/"
+  health_check_protocol = "HTTP"
+  health_check_interval = 30
+  health_check_timeout  = 5
+  healthy_threshold     = 2
+  unhealthy_threshold   = 2
+  listener_port         = 80
+  listener_protocol     = "HTTP"
+  target_ids            = module.ec2.instance_id
+  tags                  = var.tags
+}
