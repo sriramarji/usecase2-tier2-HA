@@ -1,3 +1,31 @@
+resource "aws_security_group" "web_sg" {
+  vpc_id = var.vpc_id
+
+  ingress {
+    from_port = 80
+    to_port   = 80
+    protocol  = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  ingress {
+    from_port  = 22
+    to_port    = 22
+    protocol   = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  egress {
+    from_port  = 0
+    to_port    = 0
+    protocol   = "tcp"
+    cidr_blocks = ["0.0.0.0/0"] 
+  } 
+  tags = {
+    Name = "web-sg"
+  }
+}
+
 resource "aws_instance" "web_server_1" {
   ami           = var.ami_id
   instance_type = var.instance_type
@@ -7,7 +35,7 @@ resource "aws_instance" "web_server_1" {
         #!/bin/bash
         sudo apt update -y
         sudo apt install nginx -y
-        echo "<h1>I'm from Web Server1</h1>" | sudo tee /var/www/html/index.html
+        echo "<h1>Web Server 1 is running</h1>" | sudo tee /var/www/html/index.html
         sudo systemctl start nginx
         EOF
   tags = {
@@ -24,37 +52,10 @@ resource "aws_instance" "web_server_2" {
         #!/bin/bash
         sudo apt update -y
         sudo apt install nginx -y
-        echo "<h1>I'm from Web Server2</h1>" | sudo tee /var/www/html/index.html
+        echo "<h1>Web Server 2 is running</h1>" | sudo tee /var/www/html/index.html
         sudo systemctl start nginx
         EOF
   tags = {
-    Name = "web-server-2"
-  }
-}
-
-resource "aws_security_group" "web_sg" {
-  vpc_id = var.vpc_id
-
-  ingress {
-    description = "SSH from VPC"
-    from_port   = 22
-    to_port     = 22
-    protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"] # Be more restrictive in production
-  }
-
-  ingress {
-    description = "HTTP from VPC"
-    from_port   = 80
-    to_port     = 80
-    protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"] # Be more restrictive in production
-  }
-
-  egress {
-    from_port        = 0
-    to_port          = 0
-    protocol         = "tcp"
-    cidr_blocks      = ["0.0.0.0/0"]
+    Name = "web-server-1"
   }
 }

@@ -1,11 +1,11 @@
 variable "vpc_id" {
   type = string
-  description = "ID of VPC"
+  description = "ID of the VPC"
 }
 
 variable "private_subnet_ids" {
   type = list(string)
-  description = "IDs of private subnets"
+  description = "IDs of the private subnets"
 }
 
 variable "db_instance_type" {

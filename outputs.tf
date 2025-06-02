@@ -13,7 +13,7 @@ output "private_subnet_ids" {
   description = "IDs of the private subnets"
 }
 
-output "webserver_public_ips" {
+output "web_server_public_ips" {
   value = module.ec2.webserver_public_ips
   description = "Public IPs of the web servers"
 }
