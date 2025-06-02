@@ -1,4 +1,4 @@
-/*variable "name" {
+variable "name" {
   description = "The name of the load balancer"
   type        = string
 }
@@ -81,4 +81,4 @@ variable "target_ids" {
 variable "tags" {
   description = "Tags to apply to resources"
   type        = map(string)
-}*/
+}
