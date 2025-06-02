@@ -14,7 +14,6 @@ module "ec2" {
 
   ami_id            = var.ami_id
   instance_type     = var.instance_type
-  key_name          = var.key_name
   vpc_id            = module.vpc.vpc_id
   public_subnet_id_1  = module.vpc.public_subnet_ids[0]
   public_subnet_id_2  = module.vpc.public_subnet_ids[1]

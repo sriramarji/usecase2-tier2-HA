@@ -33,11 +33,6 @@ variable "ami_id" {
   default = "ami-084568db4383264d4"
 }
 
-variable "key_name" {
-    type = string
-    default = "Hcl-prac-training"
-}
-
 variable "instance_type" {
   type = string
   description = "Instance type"
