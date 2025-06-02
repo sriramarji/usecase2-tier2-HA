@@ -5,7 +5,7 @@ resource "aws_vpc" "usecase-2" {
   }
 }
 
-resource "aws_internet_gateway" "gw" {
+resource "aws_internet_gateway" "igw" {
   vpc_id = aws_vpc.usecase-2.id
 
   tags = {
