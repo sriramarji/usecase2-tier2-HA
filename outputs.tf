@@ -14,7 +14,7 @@ output "private_subnet_ids" {
 }
 
 output "web_server_public_ips" {
-  value = module.ec2.webserver_public_ips
+  value = module.ec2.web_server_public_ips
   description = "Public IPs of the web servers"
 }
 
