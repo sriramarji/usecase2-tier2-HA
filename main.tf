@@ -28,5 +28,5 @@ module "rds" {
   db_instance_type   = var.db_instance_type
   db_username        = var.db_username
   db_password        = var.db_password
-  web_sg_id          = [module.ec2.web_sg_id]
+  web_sg_id          = module.ec2.web_sg_id
 }
