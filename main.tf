@@ -34,7 +34,7 @@ module "alb" {
   source                = "./modules/alb"
   name                  = "web-lb"
   #security_group_id     = module.security_groups.web_sg_id
-  #subnet_ids            = module.network.public_subnets_id
+  subnet_ids            = module.ec2.public_subnets_id
   target_group_name     = "web-target-group"
   target_group_port     = 80
   target_group_protocol = "HTTP"
